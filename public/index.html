@@ -27,6 +27,7 @@
   <script type="text/javascript" src="/scripts/app.js"></script>
 
   <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
+  <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 </head>
 
 <body>
@@ -42,7 +43,7 @@
     <section class="new-tweet">
       <h2 class="new-tweet__header">Compose Tweet</h2>
       <form class="new-tweet__form" action="/tweets/" method="POST">
-        <textarea name="text" placeholder="What are you humming about?"></textarea>
+        <textarea name="text" placeholder="What are you humming about?" maxlength="140" required></textarea>
         <input class="new-tweet__submitBtn" type="submit" value="Tweet">
         <span class="counter">140</span>
       </form>
@@ -70,17 +71,14 @@
             <object type="image/svg+xml" data="../images/retweet-solid.svg" class="single-tweet__twitterIcons--retweet">
             </object>
             <object type="image/svg+xml" data="../images/heart-solid.svg" class="single-tweet__twitterIcons--heart">
-            </object> -->
-      <!-- <i class="fas fa-flag"></i> -->
-      <!-- <img src="../images/flag-solid.svg" alt="flag" class="single-tweet__twitterIcons--flag">
-            <img src="../images/retweet-solid.svg" alt="retweet" class="single-tweet__twitterIcons--retweet">
-            <img src="../images/heart-solid.svg" alt="heart" class="single-tweet__twitterIcons--heart"> 
+            </object> 
+      <i class="fas fa-flag"></i> 
             <p alt="flag" class="single-tweet__twitterIcons--flag">Flag</p>
             <p alt="retweet" class="single-tweet__twitterIcons--retweet">Retweet</p>
-            <p alt="heart" class="single-tweet__twitterIcons--heart">Heart</p>
-          </div>
-        </div>
-      </div> -->
+            <p alt="heart" class="single-tweet__twitterIcons--heart">Heart</p>-->
+      </div>
+      </div>
+      </div>
     </section>
   </main>
 
