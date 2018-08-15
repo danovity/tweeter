@@ -1,9 +1,9 @@
 $(document).ready(function () {
     $(".new-tweet__form")
         .children()
-        .on("keydown keypress keyup", function () {
+        .on("input", function () {
             var currentValue = 140 - this.value.length;
-
+            $(".new-tweet__errorMessage").slideUp("fast");
             $(this)
                 .siblings(".counter")
                 .text(currentValue);
@@ -19,5 +19,9 @@ $(document).ready(function () {
             }
         });
 
-    // to add it to the page so we can make sure it's got all the right elements, classes, etc.
+    $(".nav-bar__composeBtn").on("click", function () {
+        $(".new-tweet").toggle("slow", function () {
+            $(".new-tweet__form").children("textarea").focus();
+        });
+    });
 });

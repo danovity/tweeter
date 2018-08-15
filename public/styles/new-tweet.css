@@ -19,6 +19,7 @@
     grid-template-rows: 1fr min-content;
     grid-template-columns: 1fr 1fr;
     grid-row-gap: 5px;
+    position: relative;
 }
 
 .new-tweet__form textarea {
@@ -34,4 +35,15 @@
     display: grid;
     justify-self: end;
     align-self: center;
+}
+
+.new-tweet__errorMessage {
+    position: absolute;
+    top: 57%;
+    left: 15%;
+    padding: 10px;
+    background-color: #e64141;
+    color: white;
+    border-radius: 5px;
+    display: none;
 }

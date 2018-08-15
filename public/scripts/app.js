@@ -51,15 +51,24 @@ $(document).ready(function () {
                 created_at: 1461113796368
             }
         ]; */
+    function escape(str) {
+        var div = document.createElement('div');
+        div.appendChild(document.createTextNode(str));
+        return div.innerHTML;
+    }
 
     $('.new-tweet__submitBtn').on("click", function (e) {
         e.preventDefault();
-        const userInput = $(this).siblings("textarea").val();
-        if (userInput.length > 140) {
-            alert("The tweet must be within 140 characters");
+        const $textArea = $(this).siblings("textarea");
+        const $counter = $(this).siblings(".counter");
+        const $userInput = $textArea.val();
+        if ($userInput.length > 140) {
+            $(".new-tweet__errorMessage").slideDown("fast").text("The tweet must be within 140 characters");
+            //alert("The tweet must be within 140 characters");
             return false;
-        } else if (userInput.length === 0) {
-            alert("You have to enter your tweet before posting.");
+        } else if ($userInput.length === 0) {
+            //alert("You have to enter your tweet before posting.");
+            $(".new-tweet__errorMessage").slideDown("fast").text("You have to enter your tweet before posting.");
             return false;
         }
 
@@ -67,19 +76,23 @@ $(document).ready(function () {
             .parent(".new-tweet__form")
             .serialize();
 
+        //post and get then render new tweets
         $.ajax({
             type: "POST",
             url: "/tweets/",
             datatype: 'json',
             data: string //success
-        }).done(function (msg) {
+        }).done((msg) => {
             console.log("Data Saved.", msg);
             $(".single-tweet").remove();
             $.ajax('/tweets', {
                     method: 'GET'
                 })
-                .then(function (response) {
+                .then((response) => {
                     console.log('Success: ', response);
+                    $textArea.val("");
+                    $counter.text("140");
+                    $(".new-tweet__errorMessage").slideUp("fast");
                     renderTweets(response);
                 });
         });
@@ -102,7 +115,7 @@ $(document).ready(function () {
             </div>
             <div class="single-tweet__rowTwo">
             <p class="single-tweet__textArea">
-                ${content}
+                ${escape(content)}
             </p>
             </div>
             <div class="single-tweet__rowThree">
@@ -125,12 +138,18 @@ $(document).ready(function () {
         // loops through tweets
         // calls createTweetElement for each tweet
         // takes return value and appends it to the tweets container
-        tweets.forEach((cur, i) => {
+
+        tweets.sort((a, b) => {
+            var timeA = a.created_at;
+            var timeB = b.created_at;
+            if (timeA < timeB)
+                //sort string ascending
+                return 1;
+            if (timeA > timeB) return -1;
+        }).forEach((cur, i) => {
             let $tweet = createTweetElement(cur);
             $(".display-tweets").append($tweet);
         });
     }
 
-    // Test / driver code (temporary)
-    // console.log($tweet); // to see what it looks like
 });

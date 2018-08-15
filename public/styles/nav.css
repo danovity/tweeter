@@ -6,9 +6,9 @@
     width: 100%;
     color: #e8fdff;
     padding-left: 2em;
-    display: flex;
-    align-items: center;
+    display: grid;
     padding-right: 2em;
+    grid-template-columns: min-content 1fr;
     z-index: 10;
 }
 
@@ -20,4 +20,28 @@
 #nav-bar .header {
     margin-left: 10px;
     font-size: 2em;
+}
+
+.nav-bar__logo {
+    display: flex;
+    align-items: center;
+}
+
+.nav-bar__composeBtn {
+    align-self: center;
+    justify-self: end;
+    background-color: white;
+    color: #00a087;
+    padding: 10px;
+    border-radius: 5px;
+    opacity: .95;
+    border: 1px solid black;
+    transition: all .2s;
+    cursor: pointer;
+}
+
+.nav-bar__composeBtn:hover {
+    opacity: 1;
+    color: black;
+    cursor: pointer;
 }
