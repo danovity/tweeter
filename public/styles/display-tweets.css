@@ -1,0 +1,79 @@
+.single-tweet {
+    display: grid;
+    grid-template-rows: min-content 1fr min-content;
+    border: 1px solid #c4c4c4;
+    margin-bottom: 50px;
+    border-radius: 10px;
+    overflow: hidden;
+    opacity: .7;
+    transition: all .2s;
+}
+
+.single-tweet:hover {
+    opacity: 1;
+}
+
+.single-tweet:hover .single-tweet__twitterIcons {
+    visibility: visible;
+}
+
+.single-tweet__rowOne {
+    display: grid;
+    grid-template-columns: min-content 1fr 1fr;
+    grid-column-gap: 10px;
+    align-items: start;
+    background-color: #eee;
+    padding: 10px;
+}
+
+.single-tweet__userIcon {
+    border-top: 1px solid #c4c4c4;
+    border-radius: 10px;
+}
+
+.single-tweet__userName {
+    margin: 0px;
+}
+
+.single-tweet__twitterName {
+    margin: 0;
+    justify-self: end;
+    align-self: center;
+    transform: translateY(-50%);
+}
+
+.single-tweet__rowTwo {
+    padding: 10px;
+}
+
+.single-tweet__rowThree {
+    padding: 10px;
+    border-top: 1px solid #e6e6e6;
+    grid-template-columns: 3fr 1fr;
+    display: grid;
+    align-items: center;
+}
+
+.single-tweet__twitterIcons {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 10px;
+    visibility: hidden;
+}
+
+.single-tweet__twitterIcons--flag {
+    color: #54d4ee;
+    margin: 0;
+}
+
+.single-tweet__twitterIcons--heart {
+    color: #54d4ee;
+    margin: 0;
+}
+
+.single-tweet__twitterIcons--retweet {
+    height: 100%;
+    color: #54d4ee;
+    margin: 0;
+}

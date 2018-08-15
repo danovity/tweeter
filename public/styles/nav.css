@@ -9,6 +9,7 @@
     display: flex;
     align-items: center;
     padding-right: 2em;
+    z-index: 10;
 }
 
 #nav-bar .logo {

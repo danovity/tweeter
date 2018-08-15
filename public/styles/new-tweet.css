@@ -7,11 +7,11 @@
     border-radius: 5px;
     border: 1px solid #c4c4c4;
     padding: 10px;
+    grid-row-gap: 10px;
 }
 
 .new-tweet__header {
     border-bottom: 1px solid black;
-    margin-top: 0;
 }
 
 .new-tweet__form {
