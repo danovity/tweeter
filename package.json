@@ -5,7 +5,7 @@
   "main": "server/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server/index.js",
+    "start": "nodemon server/index.js",
     "local": "./node_modules/.bin/nodemon --watch server -e js server/index.js"
   },
   "author": "Lighthouse Labs",
@@ -16,7 +16,7 @@
     "express": "^4.13.4",
     "fontawesome": "^4.7.2",
     "md5": "^2.1.0",
-    "mongodb": "^3.1.3"
+    "mongodb": "^2.2.36"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.2.0",

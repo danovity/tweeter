@@ -64,10 +64,8 @@ $(document).ready(function () {
         const $userInput = $textArea.val();
         if ($userInput.length > 140) {
             $(".new-tweet__errorMessage").slideDown("fast").text("The tweet must be within 140 characters");
-            //alert("The tweet must be within 140 characters");
             return false;
         } else if ($userInput.length === 0) {
-            //alert("You have to enter your tweet before posting.");
             $(".new-tweet__errorMessage").slideDown("fast").text("You have to enter your tweet before posting.");
             return false;
         }
