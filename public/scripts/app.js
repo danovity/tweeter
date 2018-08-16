@@ -120,6 +120,10 @@ $(document).ready(function () {
             <div class="single-tweet__daysAgo">
                 ${time} days ago
             </div>
+            <div class="single-tweet__likesContainer">
+      <div class="single-tweet__likesLabel">Likes</div>
+      <div class="single-tweet__likesCount">0</div>
+    </div>
             <div class="single-tweet__twitterIcons">
                 <p alt="flag" class="single-tweet__twitterIcons--flag">Flag</p>
                 <p alt="retweet" class="single-tweet__twitterIcons--retweet">Retweet</p>

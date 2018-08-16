@@ -49,9 +49,32 @@
 .single-tweet__rowThree {
     padding: 10px;
     border-top: 1px solid #e6e6e6;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     display: grid;
     align-items: center;
+}
+
+.single-tweet__likesContainer {
+    display: grid;
+    grid-template-columns: min-content min-content;
+    align-items: center;
+}
+
+.single-tweet__likesLabel {
+    padding: 10px;
+    background-color: #00a087;
+    color: white;
+    border: 1px solid #00a087;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.single-tweet__likesCount {
+    padding: 10px;
+    border: 1px solid #00a087;
+    border-top-right-radius: 5px;
+    color: #00a087;
+    border-bottom-right-radius: 5px;
 }
 
 .single-tweet__twitterIcons {
