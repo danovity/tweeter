@@ -6,12 +6,47 @@
 // Test / driver code (temporary). Eventually will get this from the server.
 $(document).ready(function () {
 
+    $.ajax('/tweets', {
+            method: 'GET'
+        })
+        .then((response) => {
+            console.log('Success: ', response);
+
+            $(".counter").text("140");
+            $(".new-tweet__errorMessage").slideUp("fast");
+            renderTweets(response);
+        });
+
     function escape(str) {
         var div = document.createElement('div');
         div.appendChild(document.createTextNode(str));
         return div.innerHTML;
     }
+    $('.nav-bar__submitBtn').on("click", function (e) {
+        e.preventDefault();
+        var string = $(this)
+            .parent(".nav-bar__userInputContainer--login")
+            .serialize();
+        $.ajax({
+            type: "POST",
+            url: "/login/",
+            datatype: 'json',
+            data: string //success
+        }).done((id) => {
+            if (id) {
+                var newEl = ` 
+            
+            <form class="nav-bar__userInputContainer nav-bar__userInputContainer--logout" action="/logout" method="post">
+            <p class="nav-bar__userInformation">Welcome, ${id}</p>
+            <input class="nav-bar__logoutSubmitBtn" type="submit" value="Logout">
+        </form>`;
 
+                $(".nav-bar__userInputContainer").remove();
+                $(".nav-bar__userIconContainer").append(newEl);
+
+            }
+        });
+    });
     $('.new-tweet__submitBtn').on("click", function (e) {
         e.preventDefault();
         const $textArea = $(this).siblings("textarea");

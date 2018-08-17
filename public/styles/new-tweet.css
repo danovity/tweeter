@@ -29,6 +29,11 @@
 .new-tweet__submitBtn {
     display: grid;
     justify-self: start;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: 1px 1px 8px 1px #888888;
+    cursor: pointer;
 }
 
 .counter {
@@ -39,11 +44,15 @@
 
 .new-tweet__errorMessage {
     position: absolute;
-    top: 57%;
+    top: 66%;
     left: 15%;
     padding: 10px;
     background-color: #e64141;
     color: white;
     border-radius: 5px;
     display: none;
+}
+
+.new-tweet__submitBtn:hover {
+    transform: translateY(-5%);
 }

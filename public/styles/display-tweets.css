@@ -13,8 +13,15 @@
     opacity: 1;
 }
 
-.single-tweet:hover .single-tweet__twitterIcons {
+.single-tweet:hover .single-tweet__twitterIcons,
+.single-tweet:hover .single-tweet__likesContainer {
     visibility: visible;
+}
+
+.single-tweet__twitterIcons--flag:hover,
+.single-tweet__twitterIcons--heart:hover,
+.single-tweet__twitterIcons--retweet:hover {
+    color: rgba(233, 69, 69, 0.801);
 }
 
 .single-tweet__rowOne {
@@ -58,6 +65,7 @@
     display: grid;
     grid-template-columns: min-content min-content;
     align-items: center;
+    visibility: hidden;
 }
 
 .single-tweet__likesLabel {
@@ -83,6 +91,7 @@
     grid-template-columns: 1fr 1fr 1fr;
     grid-column-gap: 10px;
     visibility: hidden;
+    cursor: pointer;
 }
 
 .single-tweet__twitterIcons--flag {

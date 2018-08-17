@@ -8,8 +8,10 @@
     padding-left: 2em;
     display: grid;
     padding-right: 2em;
-    grid-template-columns: min-content 1fr;
+    grid-template-columns: 1fr 30px min-content min-content;
     z-index: 10;
+    grid-column-gap: 20px;
+    align-items: center;
 }
 
 #nav-bar .logo {
@@ -34,9 +36,9 @@
     color: #00a087;
     padding: 10px;
     border-radius: 5px;
-    opacity: .95;
+    opacity: 0.95;
     border: 1px solid black;
-    transition: all .2s;
+    transition: all 0.2s;
     cursor: pointer;
 }
 
@@ -45,3 +47,60 @@
     color: black;
     cursor: pointer;
 }
+
+.nav-bar__icon {
+    width: 100%;
+}
+
+.nav-bar__icon:hover path {
+    cursor: pointer;
+    fill: #f86554;
+}
+
+.nav-bar__userInputContainer--login {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    position: absolute;
+    width: 10%;
+    top: 40px;
+    left: -230px;
+    height: 50%;
+    border-style: none;
+}
+
+.nav-bar__password,
+.nav-bar__email,
+.nav-bar__submitBtn {
+    display: none;
+}
+
+.nav-bar__submitBtn {
+    grid-column: span 2;
+}
+
+.nav-bar__userIconContainer {
+    position: relative;
+}
+
+.nav-bar__userInputContainer--logout {
+    position: absolute;
+    top: 40px;
+    left: -70px;
+    background-color: pink;
+    padding: 10px;
+    display: none;
+}
+
+/* .nav-bar__userInformation {
+    position: absolute;
+    top: 40px;
+    left: -70px;
+    background-color: pink;
+    padding: 10px;
+    display: none;
+}
+
+.nav-bar__logoutSubmitBtn{
+    position:absolute;
+} */
