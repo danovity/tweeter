@@ -16,6 +16,7 @@ Tweeter is a simple, single-page Twitter clone.
 ### 2. Adding Twitter
 
 <img src="public/images/addingTweet.gif" width="500">
+
 ### 3. Toggle "Compose Twitter" Display
 
 <img src="public/images/toggleCollapseComposeTweet.gif" width="500">
