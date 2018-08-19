@@ -6,10 +6,7 @@ const PORT = 8080;
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
-var tweeterDB, userDB;
 var cookieSession = require("cookie-session");
-const uuidv4 = require("uuid/v4");
-const bcrypt = require("bcrypt");
 
 app.set('view engine', 'html');
 
@@ -37,18 +34,14 @@ MongoClient.connect(MONGODB_URI, (err, db) => {
   const DataHelpers = require("./lib/data-helpers.js")(db);
   const tweetsRoutes = require("./routes/tweets")(DataHelpers);
   const loginRoutes = require('./routes/login')(DataHelpers);
-  //console.log('loginRoutes', loginRoutes);
+  const logoutRoutes = require('./routes/logout')();
   //const registerRoutes = require('./routes/register')();
 
   app.use("/tweets", tweetsRoutes);
   app.use("/login", loginRoutes);
+  app.use("/logout", logoutRoutes);
   //app.use("/register", registerRoutes);
 });
-
-/* MongoClient.connect("mongodb://localhost:27017/user", (err, db) => {
-  userDB = db;
-}); */
-
 
 
 app.listen(PORT, () => {

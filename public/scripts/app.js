@@ -4,29 +4,34 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 // Test / driver code (temporary). Eventually will get this from the server.
-$(document).ready(function () {
 
+
+$(document).ready(function () {
+    //Load tweets on start up
     $.ajax('/tweets', {
             method: 'GET'
         })
         .then((response) => {
-            console.log('Success: ', response);
 
             $(".counter").text("140");
             $(".new-tweet__errorMessage").slideUp("fast");
             renderTweets(response);
         });
 
+    //Ajax get to '/tweets', to get and display all tweets
+
+
+    //XSS 
     function escape(str) {
         var div = document.createElement('div');
         div.appendChild(document.createTextNode(str));
         return div.innerHTML;
     }
-    $('.nav-bar__submitBtn').on("click", function (e) {
-        e.preventDefault();
-        var string = $(this)
-            .parent(".nav-bar__userInputContainer--login")
-            .serialize();
+
+    //attaches event listener again after logout button is clicked
+    function clickSubmit(event) {
+        event.preventDefault();
+        var string = $(".nav-bar__userInputContainer--login").serialize();
         $.ajax({
             type: "POST",
             url: "/login/",
@@ -34,19 +39,44 @@ $(document).ready(function () {
             data: string //success
         }).done((id) => {
             if (id) {
-                var newEl = ` 
-            
-            <form class="nav-bar__userInputContainer nav-bar__userInputContainer--logout" action="/logout" method="post">
-            <p class="nav-bar__userInformation">Welcome, ${id}</p>
-            <input class="nav-bar__logoutSubmitBtn" type="submit" value="Logout">
-        </form>`;
+                const logoutForm = ` 
+                    <form class="nav-bar__userInputContainer nav-bar__userInputContainer--logout">
+                        <p class="nav-bar__userInformation">Welcome, ${id}</p>
+                        <input class="nav-bar__logoutSubmitBtn" type="submit" value="Logout">
+                    </form>`;
 
                 $(".nav-bar__userInputContainer").remove();
-                $(".nav-bar__userIconContainer").append(newEl);
-
+                $(".nav-bar__userIconContainer").append(logoutForm);
             }
         });
+
+    }
+    //Toggle login form and Welcome user form 
+    //As user is logged in and out
+
+    $('.nav-bar__submitBtn').on("click", function (e) {
+        clickSubmit(e);
     });
+
+    $('.nav-bar__userIconContainer').on("click", '.nav-bar__logoutSubmitBtn', function (e) {
+        e.preventDefault();
+        $.ajax({
+            type: "GET",
+            url: "/logout/"
+        }).done(function (response) {
+            const loginForm =
+                `<form class="nav-bar__userInputContainer nav-bar__userInputContainer--login" >
+                    <input type="email" class="nav-bar__email" name="email" placeholder="Email">
+                    <input type="password" class="nav-bar__password" name="password" placeholder="Password">
+                    <input class="nav-bar__submitBtn" type="submit" value="Submit">
+                </form>`;
+
+            $(".nav-bar__userInputContainer").remove();
+            $(".nav-bar__userIconContainer").append(loginForm);
+            $('.nav-bar__submitBtn').bind('click', clickSubmit);
+        });
+    });
+
     $('.new-tweet__submitBtn').on("click", function (e) {
         e.preventDefault();
         const $textArea = $(this).siblings("textarea");
@@ -71,13 +101,11 @@ $(document).ready(function () {
             datatype: 'json',
             data: string //success
         }).done((msg) => {
-            console.log("Data Saved.", msg);
             $(".single-tweet").remove();
             $.ajax('/tweets', {
                     method: 'GET'
                 })
                 .then((response) => {
-                    console.log('Success: ', response);
                     $textArea.val("");
                     $counter.text("140");
                     $(".new-tweet__errorMessage").slideUp("fast");
@@ -94,7 +122,8 @@ $(document).ready(function () {
         const timeStamp = new Date(tweet.created_at).getTime();
         const today = new Date().getTime();
         const time = Math.floor((today - timeStamp) / 1000 / 60 / 60 / 24);
-        let element = `
+
+        let singleTweet = `
           <div class="single-tweet">
             <div class="single-tweet__rowOne">
             <img class="single-tweet__userIcon" src="${avatarUrl}">
@@ -123,7 +152,7 @@ $(document).ready(function () {
             </div>
             `;
 
-        return element;
+        return singleTweet;
     }
 
     function renderTweets(tweets) {

@@ -43,7 +43,7 @@
       <path fill="currentColor" d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"></path>
     </svg>
     <div class="nav-bar__userIconContainer">
-      <form class="nav-bar__userInputContainer nav-bar__userInputContainer--login" action="/login" method="post">
+      <form class="nav-bar__userInputContainer nav-bar__userInputContainer--login">
         <input type="email" class="nav-bar__email" name="email" placeholder="Email">
         <input type="password" class="nav-bar__password" name="password" placeholder="Password">
         <input class="nav-bar__submitBtn" type="submit" value="Submit">
@@ -60,7 +60,7 @@
     <section class="new-tweet">
       <h2 class="new-tweet__header">Compose Tweet</h2>
       <form class="new-tweet__form" action="/tweets/" method="POST">
-        <textarea name="text" placeholder="What are you humming about" class="new-tweet__textArea"></textarea>
+        <textarea name="text" placeholder="What are you humming about?" class="new-tweet__textArea"></textarea>
         <div class="new-tweet__errorMessage">Error</div>
         <input class="new-tweet__submitBtn" type="submit" value="Tweet">
         <span class="counter">140</span>
@@ -68,28 +68,7 @@
     </section>
 
     <section class="display-tweets">
-      <!--       <div class="single-tweet">
-        <div class="single-tweet__rowOne">
-          <img class="single-tweet__userIcon" src="https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png">
-          <h2 class="single-tweet__userName">Bill Fields</h2>
-          <p class="single-tweet__twitterName">@MrFields</p>
-        </div>
-        <div class="single-tweet__rowTwo">
-          <p class="single-tweet__textArea">
-            Little tweet here
-          </p>
-        </div>
-        <div class="single-tweet__rowThree">
-              <div class="single-tweet__likesContainer">
-      <div class="single-tweet__likesLabel">Likes</div>
-      <div class="single-tweet__likesCount">0</div>
-    </div>
-          <div class="single-tweet__daysAgo">
-            10 days ago
-          </div>
-          <div class="single-tweet__twitterIcons">
-          </div>
-            -->
+
     </section>
   </main>
 

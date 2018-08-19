@@ -2,7 +2,7 @@
     display: grid;
     grid-template-rows: min-content 1fr min-content;
     border: 1px solid #c4c4c4;
-    margin-bottom: 50px;
+    margin-top: 50px;
     border-radius: 10px;
     overflow: hidden;
     opacity: .7;
@@ -11,6 +11,10 @@
 
 .single-tweet:hover {
     opacity: 1;
+}
+
+.single-tweet:last-of-type {
+    margin-bottom: 50px;
 }
 
 .single-tweet:hover .single-tweet__twitterIcons,

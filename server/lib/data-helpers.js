@@ -33,6 +33,7 @@ module.exports = function makeDataHelpers(db) {
           console.log(err);
           return callback(err);
         }
+
         for (var user of users) {
           if (enteredEmail === user.email) {
             /* let passwordValid = bcrypt.compareSync(
